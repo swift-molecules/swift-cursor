@@ -19,9 +19,15 @@ import Testing
 
 @Suite
 struct `Cursor Tests` {
-    @Test
-    func `namespace is available`() {
-        // Minimal smoke test — the real suite is authored during flip-prep.
-        #expect(Bool(true))
+    @Suite struct Unit {
+        @Test
+        func `namespace is available`() {
+            // Minimal smoke test — the real suite is authored during flip-prep.
+            #expect(Bool(true))
+        }
     }
+
+    @Suite struct `Edge Case` {}
+
+    @Suite struct Integration {}
 }

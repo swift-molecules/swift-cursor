@@ -69,6 +69,12 @@ public import Tagged_Primitives
 /// Phase 4 expansion requires either a sibling owned-cursor type or a more
 /// general protocol bound. Deferred per the v1.2.0 doc.
 @frozen
+// SAFETY: `Cursor` stores only a borrowed `DomainTag.Borrowed` value and a
+// `Tagged` position offset; both are ordinary Swift value types with no raw
+// pointers, unsafe buffers, or manually-managed lifetimes. The `@safe`
+// attribute documents that the `~Copyable & ~Escapable` storage composition
+// upholds Swift's memory-safety invariants by construction (Category A: no
+// unsafe constructs present in the declaration).
 @safe
 public struct Cursor<
     DomainTag: Ownership.Borrow.`Protocol` & ~Copyable
