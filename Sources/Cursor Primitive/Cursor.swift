@@ -114,7 +114,7 @@ public struct Cursor<
     @_lifetime(copy storage)
     public init(_ storage: consuming DomainTag.Borrowed) {
         self.storage = storage
-        self._position = Tagged<DomainTag, Ordinal>(_unchecked: Ordinal(UInt(0)))
+        self._position = Tagged<DomainTag, Ordinal>(0)
     }
     // swiftlint:enable no_tag_suffix_phantom
 }
