@@ -48,7 +48,6 @@ let package = Package(
         ),
     ],
     targets: [
-        // MARK: - Namespace
 
         .target(
             name: "Cursor Primitive",
@@ -63,16 +62,12 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Umbrella
-
         .target(
             name: "Cursor Primitives",
             dependencies: [
                 "Cursor Primitive"
             ]
         ),
-
-        // MARK: - Test Support
 
         .target(
             name: "Cursor Primitives Test Support",
@@ -82,8 +77,6 @@ let package = Package(
             ],
             path: "Tests/Support"
         ),
-
-        // MARK: - Tests
 
         .testTarget(
             name: "Cursor Primitives Tests",
