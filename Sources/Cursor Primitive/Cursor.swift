@@ -1,6 +1,6 @@
-public import Ordinal_Primitives
-public import Ownership_Borrow_Primitives
-public import Tagged_Primitives
+public import Ordinal
+public import Ownership_Borrow
+public import Tagged
 
 @frozen
 

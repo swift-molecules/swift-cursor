@@ -1,6 +1,6 @@
 import Testing
 
-@testable import Cursor_Primitives
+@testable import Cursor
 
 @Suite
 struct `Cursor Tests` {

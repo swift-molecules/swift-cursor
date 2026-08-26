@@ -1,4 +1,4 @@
-# Cursor Primitives
+# Cursor
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -11,8 +11,8 @@ A single-generic borrowed-bytes cursor — `Cursor<DomainTag>` reads a borrowed 
 `Cursor<DomainTag>` is parameterized over one tag whose ``Ownership.Borrow.`Protocol` `` conformance supplies both the phantom domain identity (used to type the position as `Tagged<DomainTag, Ordinal>`) and the borrowed-storage shape (`DomainTag.Borrowed`). A domain whose `Borrowed` is `Swift.Span<Byte>` — like `Byte`, or any custom byte-stream tag — yields a cursor over a bare span.
 
 ```swift
-import Cursor_Primitives
-import Byte_Primitives           // Byte conforms to Ownership.Borrow.`Protocol`
+import Cursor
+import Byte           // Byte conforms to Ownership.Borrow.`Protocol`
 
 // A custom byte-stream domain reuses the same generic primitive; its
 // borrowed projection is a bare Swift.Span<Byte>, matching Byte and Text.
@@ -36,7 +36,7 @@ The cursor is `~Copyable & ~Escapable`: it cannot be duplicated and cannot outli
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-cursor-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-cursor.git", branch: "main")
 ]
 ```
 
@@ -44,7 +44,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Cursor Primitives", package: "swift-cursor-primitives"),
+        .product(name: "Cursor", package: "swift-cursor"),
     ]
 )
 ```
@@ -59,9 +59,9 @@ Three library products, composed over lower-tier primitives.
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Cursor Primitive` | `Sources/Cursor Primitive/` | The `Cursor<DomainTag>` struct, plus re-exports of `Ordinal_Primitives`, `Cardinal_Primitives`, `Ownership_Borrow_Primitives`, and `Tagged_Primitives`. |
-| `Cursor Primitives` | `Sources/Cursor Primitives/` | Umbrella re-export of `Cursor Primitive`. The canonical consumer import. |
-| `Cursor Primitives Test Support` | `Tests/Support/` | Re-exports the umbrella and `Index Primitives Test Support` for downstream test consumers. |
+| `Cursor Primitive` | `Sources/Cursor Primitive/` | The `Cursor<DomainTag>` struct, plus re-exports of `Ordinal`, `Cardinal`, `Ownership_Borrow`, and `Tagged`. |
+| `Cursor` | `Sources/Cursor/` | Umbrella re-export of `Cursor Primitive`. The canonical consumer import. |
+| `Cursor Test Support` | `Tests/Support/` | Re-exports the umbrella and `Index Test Support` for downstream test consumers. |
 
 Foundation-free.
 

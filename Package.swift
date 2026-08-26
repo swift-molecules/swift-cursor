@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-cursor-primitives",
+    name: "swift-cursor",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -17,33 +17,33 @@ let package = Package(
             targets: ["Cursor Primitive"]
         ),
         .library(
-            name: "Cursor Primitives",
-            targets: ["Cursor Primitives"]
+            name: "Cursor",
+            targets: ["Cursor"]
         ),
         .library(
-            name: "Cursor Primitives Test Support",
-            targets: ["Cursor Primitives Test Support"]
+            name: "Cursor Test Support",
+            targets: ["Cursor Test Support"]
         ),
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-tagged-primitives.git",
+            url: "https://github.com/swift-molecules/swift-tagged.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ordinal-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ordinal.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-cardinal-primitives.git",
+            url: "https://github.com/swift-molecules/swift-cardinal.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-index-primitives.git",
+            url: "https://github.com/swift-molecules/swift-index.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ownership-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ownership.git",
             branch: "main"
         ),
     ],
@@ -52,36 +52,36 @@ let package = Package(
         .target(
             name: "Cursor Primitive",
             dependencies: [
-                .product(name: "Tagged Primitives", package: "swift-tagged-primitives"),
-                .product(name: "Ordinal Primitives", package: "swift-ordinal-primitives"),
-                .product(name: "Cardinal Primitives", package: "swift-cardinal-primitives"),
+                .product(name: "Tagged", package: "swift-tagged"),
+                .product(name: "Ordinal", package: "swift-ordinal"),
+                .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(
-                    name: "Ownership Borrow Primitives",
-                    package: "swift-ownership-primitives"
+                    name: "Ownership Borrow",
+                    package: "swift-ownership"
                 ),
             ]
         ),
 
         .target(
-            name: "Cursor Primitives",
+            name: "Cursor",
             dependencies: [
                 "Cursor Primitive"
             ]
         ),
 
         .target(
-            name: "Cursor Primitives Test Support",
+            name: "Cursor Test Support",
             dependencies: [
-                "Cursor Primitives",
-                .product(name: "Index Primitives Test Support", package: "swift-index-primitives"),
+                "Cursor",
+                .product(name: "Index Test Support", package: "swift-index"),
             ],
             path: "Tests/Support"
         ),
 
         .testTarget(
-            name: "Cursor Primitives Tests",
+            name: "Cursor Tests",
             dependencies: [
-                "Cursor Primitives"
+                "Cursor"
             ]
         ),
     ],
