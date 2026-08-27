@@ -1,5 +1,5 @@
 public import Ordinal
-public import Ownership_Borrow
+public import Ownership
 public import Tagged
 
 @frozen
@@ -17,7 +17,7 @@ public struct Cursor<
     @_lifetime(copy storage)
     public init(_ storage: consuming DomainTag.Borrowed) {
         self.storage = storage
-        self._position = Tagged<DomainTag, Ordinal>(0)
+        self._position = Tagged<DomainTag, Ordinal>(_unchecked: Ordinal(0))
     }
 
 }
