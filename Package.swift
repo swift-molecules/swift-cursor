@@ -13,16 +13,16 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Cursor Primitive",
-            targets: ["Cursor Primitive"]
-        ),
-        .library(
             name: "Cursor",
             targets: ["Cursor"]
         ),
         .library(
-            name: "Cursor Test Support",
-            targets: ["Cursor Test Support"]
+            name: "Cursor Standard Library Integration",
+            targets: ["Cursor Standard Library Integration"]
+        ),
+        .library(
+            name: "Cursor Apple Foundation Integration",
+            targets: ["Cursor Apple Foundation Integration"]
         ),
     ],
     dependencies: [
@@ -35,49 +35,33 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-cardinal.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-index.git",
-            branch: "main"
-        ),
-        .package(
             url: "https://github.com/swift-molecules/swift-ownership.git",
             branch: "main"
         ),
     ],
     targets: [
-
         .target(
-            name: "Cursor Primitive",
+            name: "Cursor",
             dependencies: [
                 .product(name: "Tagged", package: "swift-tagged"),
                 .product(name: "Ordinal", package: "swift-ordinal"),
-                .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(
                     name: "Ownership Borrow",
                     package: "swift-ownership"
                 ),
             ]
         ),
-
         .target(
-            name: "Cursor",
-            dependencies: [
-                "Cursor Primitive"
-            ]
+            name: "Cursor Standard Library Integration",
+            dependencies: ["Cursor"]
         ),
-
         .target(
-            name: "Cursor Test Support",
+            name: "Cursor Apple Foundation Integration",
             dependencies: [
                 "Cursor",
-                .product(name: "Index Test Support", package: "swift-index"),
-            ],
-            path: "Tests/Support"
+                "Cursor Standard Library Integration",
+            ]
         ),
-
         .testTarget(
             name: "Cursor Tests",
             dependencies: [
