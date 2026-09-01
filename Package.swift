@@ -17,6 +17,10 @@ let package = Package(
             targets: ["Cursor"]
         ),
         .library(
+            name: "Cursor Index",
+            targets: ["Cursor Index"]
+        ),
+        .library(
             name: "Cursor Standard Library Integration",
             targets: ["Cursor Standard Library Integration"]
         ),
@@ -31,6 +35,14 @@ let package = Package(
             branch: "main"
         ),
         .package(
+            url: "https://github.com/swift-atoms/swift-index.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-atoms/swift-ordinal.git",
+            branch: "main"
+        ),
+        .package(
             url: "https://github.com/swift-atoms/swift-checkpoint.git",
             branch: "main"
         ),
@@ -42,6 +54,17 @@ let package = Package(
                 .product(name: "Iterator", package: "swift-iterator"),
                 .product(name: "Iterator Protocol", package: "swift-iterator"),
                 .product(name: "Checkpoint", package: "swift-checkpoint"),
+            ]
+        ),
+        .target(
+            name: "Cursor Index",
+            dependencies: [
+                .target(name: "Cursor"),
+                .product(name: "Iterator", package: "swift-iterator"),
+                .product(name: "Iterator Protocol", package: "swift-iterator"),
+                .product(name: "Checkpoint", package: "swift-checkpoint"),
+                .product(name: "Index", package: "swift-index"),
+                .product(name: "Ordinal Protocol", package: "swift-ordinal"),
             ]
         ),
         .target(
