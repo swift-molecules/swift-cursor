@@ -27,15 +27,11 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-atoms/swift-tagged.git",
+            url: "https://github.com/swift-atoms/swift-iterator.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-ordinal.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-atoms/swift-ownership.git",
+            url: "https://github.com/swift-atoms/swift-checkpoint.git",
             branch: "main"
         ),
     ],
@@ -43,12 +39,9 @@ let package = Package(
         .target(
             name: "Cursor",
             dependencies: [
-                .product(name: "Tagged", package: "swift-tagged"),
-                .product(name: "Ordinal", package: "swift-ordinal"),
-                .product(
-                    name: "Ownership",
-                    package: "swift-ownership"
-                ),
+                .product(name: "Iterator", package: "swift-iterator"),
+                .product(name: "Iterator Protocol", package: "swift-iterator"),
+                .product(name: "Checkpoint", package: "swift-checkpoint"),
             ]
         ),
         .target(
@@ -65,7 +58,8 @@ let package = Package(
         .testTarget(
             name: "Cursor Tests",
             dependencies: [
-                "Cursor"
+                "Cursor",
+                .product(name: "Checkpoint Test Support", package: "swift-checkpoint"),
             ]
         ),
     ],

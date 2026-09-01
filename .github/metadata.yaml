@@ -1,8 +1,9 @@
 # .github/metadata.yaml
-description: "Move-only, non-escaping borrowed-byte cursor with phantom-typed position tracking for Swift."
+description: "The algebraic cursor: a positioned, multipass read head over a sequence."
 topics:
   - primitives
   - cursor
+  - iteration
 homepage: "https://swift-institute.org"
 readme:
   family: E
