@@ -16,6 +16,10 @@ let package = Package(
             name: "Cursor",
             targets: ["Cursor"]
         ),
+        .library(
+            name: "Cursor Standard Library Integration",
+            targets: ["Cursor Standard Library Integration"]
+        ),
     ],
     dependencies: [
         .package(
@@ -34,6 +38,23 @@ let package = Package(
                 .product(name: "Iterator", package: "swift-iterator"),
                 .product(name: "Iterator Protocol", package: "swift-iterator"),
                 .product(name: "Checkpoint", package: "swift-checkpoint"),
+            ]
+        ),
+        .target(
+            name: "Cursor Standard Library Integration",
+            dependencies: [
+                "Cursor",
+                .product(name: "Iterator", package: "swift-iterator"),
+                .product(name: "Iterator Protocol", package: "swift-iterator"),
+                .product(name: "Checkpoint", package: "swift-checkpoint"),
+            ]
+        ),
+        .testTarget(
+            name: "Cursor Standard Library Integration Tests",
+            dependencies: [
+                "Cursor",
+                "Cursor Standard Library Integration",
+                .product(name: "Checkpoint Test Support", package: "swift-checkpoint"),
             ]
         ),
         .testTarget(

@@ -1,0 +1,17 @@
+public import Checkpoint
+public import Cursor
+public import Iterator
+public import Iterator_Protocol
+
+extension Swift.ArraySlice: @retroactive Iterator.`Protocol`, @retroactive Restorable, Cursor.`Protocol`
+where Element: Equatable {
+
+    public typealias Failure = Never
+
+    public typealias Checkpoint = Self
+
+    @inlinable
+    public mutating func next() -> Element? {
+        popFirst()
+    }
+}
