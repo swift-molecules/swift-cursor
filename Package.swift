@@ -16,30 +16,10 @@ let package = Package(
             name: "Cursor",
             targets: ["Cursor"]
         ),
-        .library(
-            name: "Cursor Index",
-            targets: ["Cursor Index"]
-        ),
-        .library(
-            name: "Cursor Standard Library Integration",
-            targets: ["Cursor Standard Library Integration"]
-        ),
-        .library(
-            name: "Cursor Apple Foundation Integration",
-            targets: ["Cursor Apple Foundation Integration"]
-        ),
     ],
     dependencies: [
         .package(
             url: "https://github.com/swift-atoms/swift-iterator.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-atoms/swift-index.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-atoms/swift-ordinal.git",
             branch: "main"
         ),
         .package(
@@ -54,28 +34,6 @@ let package = Package(
                 .product(name: "Iterator", package: "swift-iterator"),
                 .product(name: "Iterator Protocol", package: "swift-iterator"),
                 .product(name: "Checkpoint", package: "swift-checkpoint"),
-            ]
-        ),
-        .target(
-            name: "Cursor Index",
-            dependencies: [
-                .target(name: "Cursor"),
-                .product(name: "Iterator", package: "swift-iterator"),
-                .product(name: "Iterator Protocol", package: "swift-iterator"),
-                .product(name: "Checkpoint", package: "swift-checkpoint"),
-                .product(name: "Index", package: "swift-index"),
-                .product(name: "Ordinal Protocol", package: "swift-ordinal"),
-            ]
-        ),
-        .target(
-            name: "Cursor Standard Library Integration",
-            dependencies: ["Cursor"]
-        ),
-        .target(
-            name: "Cursor Apple Foundation Integration",
-            dependencies: [
-                "Cursor",
-                "Cursor Standard Library Integration",
             ]
         ),
         .testTarget(

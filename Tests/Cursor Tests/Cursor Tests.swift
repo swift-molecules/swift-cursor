@@ -44,18 +44,9 @@ struct `Cursor Tests` {
             )
         )
     }
-
-    @Test
-    func `positions validate against bounds`() {
-        let cursor = ArrayCursor([1, 2, 3])
-
-        #expect(cursor.isValid(0))
-        #expect(cursor.isValid(3))
-        #expect(!cursor.isValid(4))
-    }
 }
 
-private struct ArrayCursor: Cursor.Positioned {
+private struct ArrayCursor: Cursor.`Protocol` {
 
     let elements: [Int]
 
@@ -81,9 +72,5 @@ private struct ArrayCursor: Cursor.Positioned {
 
     mutating func seek(to checkpoint: Int) {
         position = checkpoint
-    }
-
-    var bounds: ClosedRange<Int> {
-        0...elements.count
     }
 }

@@ -4,5 +4,5 @@ public import Iterator_Protocol
 
 extension Cursor {
 
-    public protocol `Protocol`: Iterator.`Protocol`, Restorable, ~Copyable, ~Escapable {}
+    public protocol `Protocol`<Element, Failure>: Iterator.`Protocol`, Restorable, ~Copyable, ~Escapable {}
 }
